@@ -20,16 +20,18 @@ public class User {
     private String username;
     private String password;
     private String email;
+    private String provider;
 
     @CreationTimestamp // pc -> db (날짜주입)
     private Timestamp createdAt;
 
     @Builder
-    public User(Integer id, String username, String password, String email, Timestamp createdAt) {
-        this.id = id;
-        this.username = username;
-        this.password = password;
-        this.email = email;
+    public User(Timestamp createdAt, String provider, String email, String password, String username, Integer id) {
         this.createdAt = createdAt;
+        this.provider = provider;
+        this.email = email;
+        this.password = password;
+        this.username = username;
+        this.id = id;
     }
 }
