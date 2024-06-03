@@ -6,11 +6,9 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.web.servlet.HandlerInterceptor;
-import org.springframework.web.servlet.ModelAndView;
 import shop.mtcoding.blog._core.errors.exception.Exception401;
 import shop.mtcoding.blog._core.errors.exception.Exception500;
 import shop.mtcoding.blog._core.utils.JwtUtil;
-import shop.mtcoding.blog.user.SessionUser;
 import shop.mtcoding.blog.user.User;
 
 // /api/** 인증 필요 주소
@@ -29,7 +27,7 @@ public class LoginInterceptor implements HandlerInterceptor{
 
         // 검증
         try {
-            SessionUser sessionUser = JwtUtil.verify(jwt);
+            User sessionUser = JwtUtil.verify(jwt);
 
             // 임시 세션 (jsessionId는 필요 없음)
             HttpSession session = request.getSession();
